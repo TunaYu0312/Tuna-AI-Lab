@@ -1,0 +1,38 @@
+name: Project proposal
+description: 提议一个新的真实问题项目
+title: "[Project] "
+labels: ["proposal"]
+body:
+  - type: textarea
+    id: user_problem
+    attributes:
+      label: 用户与问题
+      description: 谁在什么场景遇到什么具体困难？
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 问题证据
+      description: 访谈、数据、公开研究或案例是什么？
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: 开源参考
+      description: 候选仓库、许可证和可借鉴内容。
+    validations:
+      required: true
+  - type: textarea
+    id: value
+    attributes:
+      label: Tuna AI Lab 的新增价值
+    validations:
+      required: true
+  - type: textarea
+    id: mvp
+    attributes:
+      label: MVP、验收与停止条件
+    validations:
+      required: true

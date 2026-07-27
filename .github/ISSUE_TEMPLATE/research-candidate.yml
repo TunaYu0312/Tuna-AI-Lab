@@ -1,0 +1,42 @@
+name: Open-source research candidate
+description: 提交一个待评估的 GitHub 项目
+title: "[Research] "
+labels: ["research"]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: Repository URL
+    validations:
+      required: true
+  - type: input
+    id: license
+    attributes:
+      label: License
+      description: 不明确时填写 Unknown。
+    validations:
+      required: true
+  - type: textarea
+    id: relevance
+    attributes:
+      label: 问题匹配与借鉴理由
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 复现条件与风险
+      description: 数据、依赖、算力、平台锁定和安全风险。
+    validations:
+      required: true
+  - type: dropdown
+    id: next
+    attributes:
+      label: 建议动作
+      options:
+        - 进入复现
+        - 继续观察
+        - 只读研究
+        - 淘汰
+    validations:
+      required: true
