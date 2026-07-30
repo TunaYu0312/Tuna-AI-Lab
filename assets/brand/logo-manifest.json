@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "brand": {
+    "name": "Tuna AI Lab",
+    "name_zh": "金枪鱼 AI 实验室"
+  },
+  "updated_at": "2026-07-30",
+  "official_logo": {
+    "status": "current",
+    "source_concept": 4,
+    "path": "assets/brand/logos/official/tuna-ai-lab-logo-primary.png",
+    "format": "png",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 1002698,
+    "sha256": "6b8afa0ea5ad5065d28ad7df24c72546c1c1f1cc631770a98ab3659df6040785",
+    "intended_uses": [
+      "documents",
+      "repository-pages",
+      "project-branding",
+      "application-branding"
+    ]
+  },
+  "concepts": [
+    {
+      "id": 1,
+      "path": "assets/brand/logos/concepts/tuna-ai-lab-logo-concept-01.png",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 999121,
+      "sha256": "b8991b5a2e736d27639702e1a85a720b202bfa9407c8f169d64ef7b2cf6ef07a"
+    },
+    {
+      "id": 2,
+      "path": "assets/brand/logos/concepts/tuna-ai-lab-logo-concept-02.png",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 973339,
+      "sha256": "42a887609ac4a8be7ae43eced16b659d1c363afcd223ec8ec6e181c7058667ec"
+    },
+    {
+      "id": 3,
+      "path": "assets/brand/logos/concepts/tuna-ai-lab-logo-concept-03.png",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 981887,
+      "sha256": "d4b3bb1df4c671fdde9fc2a7a2bbaf85c399b2163e93d668965a63ee10c5ef4a"
+    },
+    {
+      "id": 4,
+      "status": "selected-as-official",
+      "path": "assets/brand/logos/concepts/tuna-ai-lab-logo-concept-04.png",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1002698,
+      "sha256": "6b8afa0ea5ad5065d28ad7df24c72546c1c1f1cc631770a98ab3659df6040785"
+    },
+    {
+      "id": 5,
+      "path": "assets/brand/logos/concepts/tuna-ai-lab-logo-concept-05.png",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1355213,
+      "sha256": "2693ae4c399a5e63325c46b634e17bc00058dab9609baac18fcf74f25c1f36ea"
+    }
+  ]
+}
