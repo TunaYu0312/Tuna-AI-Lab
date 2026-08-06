@@ -48,6 +48,27 @@ state.teamId = "T02";
 state.risk = "action";
 render();
 globalThis.emptyRiskOk = document.getElementById("app").innerHTML.includes("empty-row");
+
+state.period = "2026-06";
+globalThis.monthTarget = periodTeam(teams[0]).target;
+state.period = "2026-Q2";
+globalThis.quarterTarget = periodTeam(teams[0]).target;
+
+state.teamId = "T03";
+state.page = "report";
+render();
+globalThis.reportOk = document.getElementById("app").innerHTML.includes("reportPreview");
+saveFeedback("T03", "2026-Q2", {
+  conclusion: "confirmed",
+  recorder: "smoke-test",
+  rootCause: "synthetic root cause",
+  leaderNote: "synthetic note",
+  nextReview: "2026-07-15",
+  updatedAt: "2026-08-06T00:00:00.000Z"
+});
+render();
+globalThis.feedbackOk = reportDocumentHtml().includes("smoke-test");
+globalThis.exportOk = reportDocumentHtml().includes("@media print");
 `;
 
 new Function("document", "globalThis", probe)(documentStub, result);
@@ -59,6 +80,10 @@ const checks = {
   attributionPage: result.attributionOk,
   riskPage: result.riskOk,
   emptyRiskState: result.emptyRiskOk,
+  periodLinked: result.quarterTarget === result.monthTarget * 3,
+  reportPage: result.reportOk,
+  feedbackContext: result.feedbackOk,
+  htmlAndPrintExport: result.exportOk,
   noFabricatedConfidence: !html.includes("82%")
 };
 

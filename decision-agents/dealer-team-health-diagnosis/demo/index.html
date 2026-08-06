@@ -30,7 +30,7 @@
       font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif;
       letter-spacing: 0;
     }
-    button, input, select { font: inherit; }
+    button, input, select, textarea { font: inherit; }
     button { border: 0; cursor: pointer; }
     h1, h2, h3, p { margin-top: 0; }
 
@@ -467,6 +467,90 @@
       text-align: right;
     }
 
+    .report-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .report-toolbar p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.45; }
+    .report-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .command-btn {
+      min-height: 44px;
+      border: 1px solid var(--teal);
+      border-radius: var(--radius);
+      background: var(--teal);
+      color: #fff;
+      padding: 8px 13px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .command-btn.secondary { background: #fff; color: var(--teal); }
+    .command-btn:focus-visible, .nav-item:focus-visible, .team-row:focus-visible, .rank-row:focus-visible, .risk-tab:focus-visible {
+      outline: 3px solid rgba(47,99,199,.35);
+      outline-offset: 2px;
+    }
+    .report-status { min-height: 20px; margin: 8px 0 0; color: var(--green); font-size: 12px; font-weight: 900; }
+
+    .report-sheet {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      padding: 26px;
+      box-shadow: 0 6px 18px rgba(31,46,55,.04);
+      margin-bottom: 14px;
+    }
+    .report-document-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding-bottom: 18px;
+      border-bottom: 2px solid var(--ink);
+    }
+    .report-document-header h1 { margin: 0 0 7px; font-size: 25px; }
+    .report-document-header p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+    .report-period { text-align: right; min-width: 210px; }
+    .report-period b { display: block; margin-bottom: 5px; font-size: 15px; }
+    .report-period span { color: var(--muted); font-size: 12px; line-height: 1.45; }
+    .report-section { padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .report-section:last-child { border-bottom: 0; padding-bottom: 0; }
+    .report-section h2 { margin-bottom: 10px; font-size: 17px; }
+    .report-summary-list { margin: 0; padding-left: 20px; display: grid; gap: 9px; }
+    .report-summary-list li, .report-section p { font-size: 13px; line-height: 1.58; }
+    .report-kpis {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 9px;
+      margin-top: 12px;
+    }
+    .report-kpi { border-left: 3px solid var(--teal); background: #f6f9fa; padding: 10px 12px; }
+    .report-kpi span { display: block; color: var(--muted); font-size: 11px; margin-bottom: 5px; }
+    .report-kpi strong { display: block; font-size: 21px; }
+    .report-risk-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin: 12px 0; }
+    .report-risk-item { border: 1px solid var(--line); padding: 9px; background: #fbfcfd; }
+    .report-risk-item b { display: block; font-size: 12px; line-height: 1.35; }
+    .report-risk-item strong { display: block; margin-top: 6px; font-size: 21px; }
+    .report-sheet table { white-space: normal; }
+    .report-sheet th, .report-sheet td { white-space: normal; line-height: 1.42; }
+    .report-caveat { color: var(--muted); font-size: 12px; line-height: 1.55; }
+
+    .feedback-panel { margin-top: 14px; }
+    .feedback-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .feedback-field.full { grid-column: 1 / -1; }
+    .feedback-field input, .feedback-field select, .feedback-field textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      color: var(--ink);
+      padding: 9px 10px;
+    }
+    .feedback-field input, .feedback-field select { min-height: 44px; }
+    .feedback-field textarea { min-height: 86px; resize: vertical; line-height: 1.5; }
+    .feedback-footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 12px; }
+    .feedback-footer p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.45; }
+
     @media (max-width: 1100px) {
       .grid-2, .decision-shell { grid-template-columns: 1fr; }
       .grid-3, .workflow, .risk-tabs, .model-grid, .segment-grid { grid-template-columns: 1fr 1fr; }
@@ -474,6 +558,7 @@
       .side-nav { position: static; }
       .team-row { grid-template-columns: 1fr 90px; }
       .overview-profile-grid { grid-template-columns: 1fr; }
+      .report-kpis, .report-risk-grid { grid-template-columns: 1fr 1fr; }
       .profile-block + .profile-block {
         border-left: 0;
         border-top: 1px solid var(--line);
@@ -485,6 +570,12 @@
     @media (max-width: 720px) {
       .shell { padding: 14px 12px 28px; }
       .topbar, .score-hero, .grid-3, .workflow, .risk-tabs, .control-bar, .model-grid, .segment-grid, .team-row { grid-template-columns: 1fr; }
+      .report-toolbar, .report-document-header, .feedback-footer { display: grid; grid-template-columns: 1fr; }
+      .report-actions { justify-content: flex-start; }
+      .report-sheet { padding: 17px; }
+      .report-period { text-align: left; min-width: 0; }
+      .report-kpis, .report-risk-grid, .feedback-grid { grid-template-columns: 1fr; }
+      .feedback-field.full { grid-column: auto; }
       .dim-head, .loss-row { grid-template-columns: 1fr; }
       h1 { font-size: 21px; }
     }
@@ -497,7 +588,7 @@
         <div class="mark">AI</div>
         <div>
           <h1>团队健康度 AI 诊断 MVP</h1>
-          <p class="subtitle">MVP 只聚焦团队层面的“发现问题、识别风险”：健康度得分、失分归因、风险提示。暂不做行动计划推荐，避免工具越界成空泛运营建议。</p>
+          <p class="subtitle">MVP 聚焦团队层面的“发现问题、识别风险”：健康度得分、失分归因、风险提示与综合诊断报告。暂不做行动计划推荐。</p>
         </div>
       </div>
       <div class="badge-row">
@@ -513,227 +604,84 @@
         <select id="teamSelect"></select>
       </div>
       <div>
-        <label for="periodSelect">诊断周期</label>
+        <label for="periodSelect">诊断周期（Mock）</label>
         <select id="periodSelect">
-          <option value="2026-06">2026-06 月度复盘</option>
-          <option value="2026-Q2">2026 Q2 季度复盘</option>
-        </select>
-      </div>
-    </section>
-
-    <section class="decision-shell">
-      <aside class="side-nav" aria-label="诊断流程导航">
-        <h2>诊断流程</h2>
-        <p>先识别重点团队，再进入单团队诊断，避免日常运营从明细开始找问题。</p>
-        <button class="nav-item active" type="button" data-page="overview">
-          <small>00</small><b>Overview 总览</b><span>先看经营全景、团队画像和排行，再筛选重点团队。</span>
-        </button>
-        <button class="nav-item" type="button" data-page="health">
-          <small>01</small><b>健康度诊断</b><span>看选中团队的总分、标签、评分模型。</span>
-        </button>
-        <button class="nav-item" type="button" data-page="attribution">
-          <small>02</small><b>归因分析</b><span>解释失分来自哪些维度，并给出核查问题。</span>
-        </button>
-        <button class="nav-item" type="button" data-page="risk">
-          <small>03</small><b>风险提示</b><span>按风险类型查看触发逻辑和重点名单。</span>
-        </button>
-      </aside>
-      <main id="app"></main>
-    </section>
-  </div>
-
-  <script>
-    const riskTypes = {
-      churn: { label: "人员流失预警", short: "核心与中腰部成员活跃下滑", trigger: "连续两月活跃或贡献下滑，且近期行为减少" },
-      newcomer: { label: "新人招募不足预警", short: "新增人数和新人启动质量不足", trigger: "新增经销商少，或新人30/90天启动率低" },
-      action: { label: "行动不足预警", short: "工具、培训、活动等经营动作不足", trigger: "Prysm、App、活动、培训行为低于阈值" },
-      target: { label: "临期目标达成不足预警", short: "周期末目标差距过大", trigger: "目标达成率低且剩余时间不足" },
-      structure: { label: "团队结构风险", short: "过度依赖Top成员或中腰部塌陷", trigger: "Top3贡献占比过高，中腰部贡献不足" }
-    };
-
-    const teams = [
-      {
-        id: "T01", name: "华东星火团队", leader: "林岚", region: "华东", target: 980, sales: 822, daysLeft: 6,
-        activeMembers: 136, totalMembers: 184, activeDrop: 9, newRecruits: 8, recruitTarget: 18, newcomerActivation: 42,
-        actionScore: 56, top3Share: 54, midShare: 23, customerScore: 68,
-        members: [
-          ["李明", "核心成员", "流失风险", "近2月销售-31%，Prysm 21天未使用", "高"],
-          ["王悦", "中腰部", "行动不足", "本月无活动参与，App登录低", "中"],
-          ["张宁", "新人", "新人启动弱", "加入45天未形成复购顾客", "高"],
-          ["陈然", "核心成员", "结构依赖", "个人贡献占团队18%", "中"],
-          ["刘静", "中腰部", "临期目标差距", "个人目标达成61%", "中"]
-        ]
-      },
-      {
-        id: "T02", name: "华南远航团队", leader: "陈乔", region: "华南", target: 860, sales: 802, daysLeft: 6,
-        activeMembers: 151, totalMembers: 176, activeDrop: 3, newRecruits: 16, recruitTarget: 15, newcomerActivation: 71,
-        actionScore: 77, top3Share: 38, midShare: 39, customerScore: 74,
-        members: [
-          ["赵青", "核心成员", "健康", "稳定贡献，复购顾客增长", "低"],
-          ["黄岚", "新人", "高潜", "30天内完成首单和顾客复测", "低"],
-          ["吴越", "中腰部", "观察", "目标达成略低于团队均值", "中"]
-        ]
-      },
-      {
-        id: "T03", name: "华北长青团队", leader: "周宁", region: "华北", target: 920, sales: 645, daysLeft: 6,
-        activeMembers: 104, totalMembers: 171, activeDrop: 16, newRecruits: 5, recruitTarget: 20, newcomerActivation: 28,
-        actionScore: 41, top3Share: 61, midShare: 17, customerScore: 52,
-        members: [
-          ["林峰", "核心成员", "流失风险", "历史贡献高，近2月活跃顾客-34%", "高"],
-          ["何然", "中腰部", "行动不足", "30天无培训和工具行为", "高"],
-          ["王璐", "新人", "新人启动弱", "加入60天无首单", "高"],
-          ["唐棠", "核心成员", "结构依赖", "Top3贡献集中，团队依赖增强", "高"],
-          ["许默", "中腰部", "临期目标差距", "目标达成55%，剩余6天", "…3309 tokens truncated…群</h3>
-              <p class="note">每个团队只进入一个主群组，用于确定日常运营管理入口。</p>
-              <div class="segment-grid">
-                ${segmentCard("高集中风险团队", rows.filter(r => r.segment === "高集中风险团队"))}
-                ${segmentCard("新人断档团队", rows.filter(r => r.segment === "新人断档团队"))}
-                ${segmentCard("活跃衰退团队", rows.filter(r => r.segment === "活跃衰退团队"))}
-                ${segmentCard("健康增长型", rows.filter(r => r.segment === "健康增长型"))}
-                ${segmentCard("稳定维持型", rows.filter(r => r.segment === "稳定维持型"))}
-                ${segmentCard("重点观察团队", rows.filter(r => r.segment === "重点观察团队"))}
-              </div>
-            </div>
-            <div class="profile-block">
-              <h3>团队标签分布统计</h3>
-              <p class="note">同一团队可命中多个标签，标签总数可能高于团队总数。</p>
-              <div class="tag-list">${labelDistribution(tags, rows.length)}</div>
-            </div>
+          <option value="2026-06"…9260 tokens truncated…on" class="command-btn" data-print-report>打印 / 保存 PDF</button>
           </div>
         </section>
-        <section class="grid-2">
-          <div class="panel">
-            <h2>表现最佳 Top 10</h2>
-            <p class="note">按团队健康度从高到低排序，用于识别可复盘和复制的团队。</p>
-            <div class="rank-list">${top.map((r, i) => rankRow(r, i)).join("")}</div>
-          </div>
-          <div class="panel">
-            <h2>表现最差 Bottom 10</h2>
-            <p class="note">按团队健康度从低到高排序，用于识别需要优先诊断的团队。</p>
-            <div class="rank-list">${bottom.map((r, i) => rankRow(r, i)).join("")}</div>
-          </div>
-        </section>
-        <section class="panel focus-panel">
+        <article class="report-sheet" id="reportPreview">${reportBodyHtml(t, dims, score, loss)}</article>
+        <section class="panel feedback-panel">
           <div class="panel-head">
             <div>
-              <h2>重点关注团队</h2>
-              <p class="note">完成总体判断后，从这里进入具体团队诊断。名单仅保留健康低分或命中红色风险标签的团队。</p>
+              <h2>运营反馈 Beta</h2>
+              <p class="note">反馈按团队和诊断周期保存，作为后续诊断的人工上下文；当前不改变规则评分。</p>
             </div>
-            <span class="badge red">AI 筛选 ${focus.length} / ${rows.length}</span>
+            <span class="badge ${feedback.updatedAt ? "blue" : "gray"}">${feedback.updatedAt ? "已记录" : "待补充"}</span>
           </div>
-          <div class="ai-box yellow focus-summary">
-            <b>AI 筛选结论</b>
-            <p>当前最集中的团队标签为 ${leadingTags}。优先查看 ${topFocus.team.name}，它的健康度为 ${fmt(topFocus.score, 1)}，并触发 ${topFocus.labels.map(l => l[0]).join("、")}。点击名单进入健康度诊断，再继续查看失分归因和风险名单。</p>
+          <div class="feedback-grid">
+            <div class="feedback-field"><label for="feedbackConclusion">复盘结论</label><select id="feedbackConclusion">${options}</select></div>
+            <div class="feedback-field"><label for="feedbackRecorder">记录人</label><input id="feedbackRecorder" value="${escapeHtml(feedback.recorder || "")}" placeholder="运营负责人或团队 Leader"></div>
+            <div class="feedback-field full"><label for="feedbackRootCause">确认的主要原因</label><textarea id="feedbackRootCause" placeholder="记录已确认的业务事实、原因和证据">${escapeHtml(feedback.rootCause || "")}</textarea></div>
+            <div class="feedback-field full"><label for="feedbackLeaderNote">Leader 补充说明</label><textarea id="feedbackLeaderNote" placeholder="记录数据之外的团队背景和替代解释">${escapeHtml(feedback.leaderNote || "")}</textarea></div>
+            <div class="feedback-field"><label for="feedbackNextReview">下次复核日期</label><input id="feedbackNextReview" type="date" value="${escapeHtml(feedback.nextReview || "")}"></div>
           </div>
-          <div class="team-list">${focus.map(r => teamRow(r)).join("")}</div>
+          <div class="feedback-footer">
+            <p>存储范围：当前浏览器｜最近更新：${escapeHtml(updated)}</p>
+            <button type="button" class="command-btn" data-save-feedback>保存反馈</button>
+          </div>
         </section>
       `;
     }
 
-    function healthHtml(t, dims, score, loss) {
-      return `
-        <section class="grid-2">
-          <div class="panel">
-            <div class="panel-head">
-              <div>
-                <h2>${t.name}</h2>
-                <p class="note">Leader：${t.leader}｜区域：${t.region}｜团队对象诊断，不进入经销商个体行动建议。</p>
-              </div>
-              <span class="badge gray">规则诊断 V0.1</span>
-            </div>
-            <div class="score-hero">
-              <div class="score-ring" style="--score:${score}">
-                <div><strong>${fmt(score, 1)}</strong><span>健康度</span></div>
-              </div>
-              <div>
-                <h3 class="label-title">团队标签</h3>
-                <div class="badge-row">${labelFor(t).map(l => `<span class="badge ${l[1]}">${l[0]}</span>`).join("")}</div>
-                <p class="note">标签由健康度失分、风险触发和团队结构共同生成，用于快速判断团队当前经营状态。</p>
-                <div class="ai-box ${score < 62 ? "red" : score < 74 ? "yellow" : ""}">
-                  <b>AI 初步诊断</b>
-                  <p>${aiSummary(t, dims, loss)}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="panel">
-            <h2>健康度评分机制模型</h2>
-            <p class="note">模型来自 PRD 的团队健康度指数：团队不是经销商个体简单加总，要同时看业绩、活跃、顾客资产、新人、结构和行动过程。</p>
-            <div class="formula">团队健康度 = Σ（维度得分 × 维度权重），满分 100。MVP 使用规则模型，不做黑箱预测。</div>
-            <div class="model-grid">${dims.map(d => modelCard(d)).join("")}</div>
-          </div>
-        </section>
-        <section class="grid-3">
-          ${kpi("目标达成", pct(t.sales / t.target * 100), `销售 ${fmt(t.sales)} / 目标 ${fmt(t.target)}`)}
-          ${kpi("活跃率", pct(t.activeMembers / t.totalMembers * 100), `活跃 ${t.activeMembers} / 总人数 ${t.totalMembers}`)}
-          ${kpi("Top3贡献占比", pct(t.top3Share), `结构风险阈值：50%`)}
-        </section>
-        <section class="panel">
-          <h2>健康度得分计算</h2>
-          <p class="note">把当前团队数据代入 6 个维度，展示每个维度对总分的贡献。</p>
-          <div class="dimension-list">${dims.map(d => dimensionHtml(d)).join("")}</div>
-        </section>
-      `;
+    function reportDocumentHtml() {
+      const t = team();
+      const dims = dimensionScores(t);
+      const score = health(t);
+      const loss = dims.map(d => ({ ...d, loss: (100 - d.score) * d.weight })).sort((a, b) => b.loss - a.loss);
+      return `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(t.name)}经营健康综合诊断报告</title><style>
+        *{box-sizing:border-box}body{margin:0;background:#eef2f3;color:#1d2932;font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif;line-height:1.5}.report-sheet{max-width:980px;margin:24px auto;background:#fff;padding:34px;box-shadow:0 8px 28px rgba(31,46,55,.12)}.report-document-header{display:flex;justify-content:space-between;gap:18px;padding-bottom:18px;border-bottom:2px solid #1d2932}.report-document-header h1{margin:0 0 7px;font-size:25px}.report-document-header p,.report-period span{margin:0;color:#61717d;font-size:12px}.report-period{text-align:right;min-width:220px}.report-period b{display:block;margin-bottom:5px}.report-section{padding:20px 0;border-bottom:1px solid #d9e3e8}.report-section:last-child{border-bottom:0}.report-section h2{font-size:17px;margin:0 0 10px}.report-section p,.report-summary-list{font-size:13px}.report-summary-list{display:grid;gap:8px;padding-left:20px}.report-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:12px 0}.report-kpi{border-left:3px solid #0f8a83;background:#f6f9fa;padding:10px 12px}.report-kpi span{display:block;color:#61717d;font-size:11px}.report-kpi strong{font-size:21px}.badge-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.badge{display:inline-block;padding:4px 8px;border-radius:999px;background:#edf3f5;color:#61717d;font-size:11px;font-weight:700}.badge.red{background:#f8e8e6;color:#99352d}.badge.yellow{background:#f5ead5;color:#835000}.badge.blue{background:#e8eefb;color:#2853a4}.report-risk-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0}.report-risk-item{border:1px solid #d9e3e8;padding:9px;background:#fbfcfd}.report-risk-item b{display:block;font-size:11px}.report-risk-item strong{display:block;margin-top:5px;font-size:20px}table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:8px;border-bottom:1px solid #d9e3e8;text-align:left;vertical-align:top}th{background:#f6f9fa;color:#61717d}.empty-row{text-align:center;color:#61717d}.report-caveat{color:#61717d}@media(max-width:720px){.report-sheet{margin:0;padding:18px;box-shadow:none}.report-document-header{display:block}.report-period{text-align:left;margin-top:12px}.report-kpis,.report-risk-grid{grid-template-columns:1fr 1fr}}@media print{body{background:#fff}.report-sheet{max-width:none;margin:0;padding:0;box-shadow:none}.report-section{break-inside:avoid}table{break-inside:auto}tr{break-inside:avoid}.report-document-header{break-after:avoid}@page{size:A4;margin:14mm}}
+      </style></head><body><article class="report-sheet">${reportBodyHtml(t, dims, score, loss)}</article></body></html>`;
     }
 
-    function attributionHtml(t, dims, loss) {
-      const ordered = [...dims].sort((a, b) => a.score - b.score);
-      return `
-        <section class="grid-2">
-          <div class="panel">
-            <h2>${t.name}｜失分项目归因</h2>
-            <p class="note">AI 按加权失分排序，告诉用户最该先看哪里。</p>
-            <div class="loss-list">${loss.map(d => lossHtml(d)).join("")}</div>
-            <div class="ai-box yellow" style="margin-top:12px">
-              <b>主要失分结论</b>
-              <p>${lossInsight(loss)}</p>
-            </div>
-          </div>
-          <div class="panel">
-            <h2>AI 引导式问题</h2>
-            <p class="note">系统不要求用户自己找洞察，而是根据失分项主动提出核查问题。</p>
-            <ul class="question-list">
-              ${loss.slice(0, 4).map((d, i) => `<li><b>问题 ${i + 1}：${d.name}</b>${diagnosticQuestion(d.key, t)}</li>`).join("")}
-            </ul>
-          </div>
-        </section>
-        <section class="panel">
-          <h2>归因证据</h2>
-          <p class="note">这里不展示所有指标，只展示造成扣分的证据，帮助运营判断问题是否真实。</p>
-          <div class="dimension-list">${ordered.map(d => dimensionHtml(d)).join("")}</div>
-        </section>
-      `;
+    function reportFilename() {
+      const t = team();
+      return `${t.name}-${periods[state.period].label}-综合诊断报告`.replace(/[\\/:*?"<>|]/g, "-");
     }
 
-    function riskHtml(t, selectedRisk) {
-      return `
-        <section class="panel">
-          <div class="panel-head">
-            <div>
-              <h2>${t.name}｜风险提示与名单</h2>
-              <p class="note">MVP只做风险发现和名单提示，不输出行动计划。新增“临期目标达成不足预警”，并纳入团队结构风险与团队标签。</p>
-            </div>
-            <span class="badge blue">${selectedRisk.label}</span>
-          </div>
-          <div class="risk-tabs">
-            ${Object.entries(riskTypes).map(([key, r]) => `<button type="button" class="risk-tab ${state.risk === key ? "active" : ""}" data-risk="${key}"><b>${r.label}</b><span>${r.short}</span></button>`).join("")}
-          </div>
-          <div class="grid-2">
-            <div>
-              <div class="ai-box">
-                <b>${selectedRisk.label}：触发逻辑</b>
-                <p>${selectedRisk.trigger}</p>
-              </div>
-            </div>
-            <div class="table-wrap">
-              <table>
-                <thead><tr><th>名单</th><th>角色</th><th>风险点</th><th>证据</th><th>等级</th></tr></thead>
-                <tbody>${riskTableBody(t)}</tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-      `;
+    function setReportStatus(message, isError = false) {
+      const target = document.getElementById("reportStatus");
+      if (!target) return;
+      target.textContent = message;
+      target.style.color = isError ? "var(--red)" : "var(--green)";
+    }
+
+    function downloadReportHtml() {
+      const blob = new Blob([reportDocumentHtml()], { type: "text/html;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${reportFilename()}.html`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 0);
+      setReportStatus("HTML 报告已生成。");
+    }
+
+    function printReport() {
+      const reportWindow = window.open("", "_blank");
+      if (!reportWindow) {
+        setReportStatus("浏览器阻止了报告窗口，请允许弹出窗口后重试。", true);
+        return;
+      }
+      reportWindow.document.open();
+      reportWindow.document.write(reportDocumentHtml());
+      reportWindow.document.close();
+      reportWindow.onload = () => {
+        reportWindow.focus();
+        reportWindow.print();
+      };
+      setReportStatus("打印窗口已打开，可选择“另存为 PDF”。");
     }
 
     function render() {
@@ -760,6 +708,11 @@
       }
       if (state.page === "risk") {
         document.getElementById("app").innerHTML = riskHtml(t, selectedRisk);
+        bind();
+        return;
+      }
+      if (state.page === "report") {
+        document.getElementById("app").innerHTML = reportPageHtml(t, dims, score, loss);
         bind();
         return;
       }
@@ -985,6 +938,20 @@
         state.risk = btn.dataset.risk;
         render();
       }));
+      document.querySelectorAll("[data-download-report]").forEach(btn => btn.addEventListener("click", downloadReportHtml));
+      document.querySelectorAll("[data-print-report]").forEach(btn => btn.addEventListener("click", printReport));
+      document.querySelectorAll("[data-save-feedback]").forEach(btn => btn.addEventListener("click", () => {
+        const feedback = {
+          conclusion: document.getElementById("feedbackConclusion").value,
+          recorder: document.getElementById("feedbackRecorder").value.trim(),
+          rootCause: document.getElementById("feedbackRootCause").value.trim(),
+          leaderNote: document.getElementById("feedbackLeaderNote").value.trim(),
+          nextReview: document.getElementById("feedbackNextReview").value,
+          updatedAt: new Date().toISOString()
+        };
+        saveFeedback(state.teamId, state.period, feedback);
+        render();
+      }));
     }
 
     function setup() {
@@ -993,6 +960,11 @@
       document.getElementById("teamSelect").addEventListener("change", e => {
         state.teamId = e.target.value;
         state.page = state.teamId === "all" ? "overview" : "health";
+        render();
+      });
+      document.getElementById("periodSelect").value = state.period;
+      document.getElementById("periodSelect").addEventListener("change", e => {
+        state.period = e.target.value;
         render();
       });
       render();

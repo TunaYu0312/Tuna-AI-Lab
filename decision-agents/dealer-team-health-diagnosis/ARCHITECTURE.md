@@ -10,7 +10,9 @@ demo/index.html
 ├── Mock Data：12 个合成团队及成员风险证据
 ├── Rule Engine：健康度、标签、分层和风险筛选
 ├── View Renderer：Overview / 健康度 / 归因 / 风险
-└── Interaction：团队、分页和风险类型切换
+├── Report Generator：综合报告预览、独立 HTML 与打印样式
+├── Feedback Store：团队 × 周期的浏览器本地反馈
+└── Interaction：团队、周期、分页、风险和导出切换
 ```
 
 浏览器加载页面后，JavaScript 直接计算所有指标并渲染页面，不发送网络请求，也不保存用户输入。
@@ -30,6 +32,9 @@ demo/index.html
   → 诊断问题
   → 风险规则过滤
   → 风险成员名单或空状态
+  → 综合诊断报告
+  → Leader / 运营反馈
+  → 后续周期诊断上下文（规划中）
 ```
 
 ## 关键模块
@@ -41,7 +46,10 @@ demo/index.html
 | 分层 | `teamSegment` | 为每个团队分配一个主群组 |
 | 优先级 | `attentionScore`、`portfolio` | 组织重点团队顺序 |
 | 风险 | `riskRows`、`riskTableBody` | 按风险类型筛选证据并处理空状态 |
-| 展示 | `overviewHtml` 等 | 生成四个页面状态 |
+| 报告 | `reportBodyHtml`、`reportDocumentHtml` | 生成页面预览和可独立分享的 HTML |
+| 导出 | `downloadReportHtml`、`printReport` | 下载 HTML 或调用浏览器打印保存 PDF |
+| 反馈 | `loadFeedback`、`saveFeedback` | 按团队和周期保存本地人工上下文 |
+| 展示 | `overviewHtml` 等 | 生成五个页面状态 |
 | 交互 | `bind`、`render` | 切换团队、页面与风险类型 |
 
 ## 为什么使用规则模型
@@ -54,6 +62,7 @@ demo/index.html
 - **团队优先**：先验证运营团队的管理入口，暂不扩大到个体画像；
 - **规则可解释**：牺牲复杂预测能力，换取可追溯性和低误解成本；
 - **不做行动推荐**：在运营 SOP 和效果证据不足前，避免生成空泛或越界建议。
+- **反馈不自动改分**：人工反馈先作为上下文留存，避免未经治理的信息直接污染规则结果。
 
 ## 下一阶段建议
 
@@ -62,4 +71,5 @@ demo/index.html
 3. 用历史数据回测权重、阈值、误报和漏报；
 4. 增加身份权限、数据脱敏、规则版本和审计记录；
 5. 只有在规则基线明确后，再评估 LLM 对解释和运营复盘的增量价值。
+6. 将反馈迁移到带身份、版本、证据引用和审计记录的持久化存储。
 
