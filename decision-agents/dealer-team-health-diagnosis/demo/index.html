@@ -606,7 +606,7 @@
       <div>
         <label for="periodSelect">诊断周期（Mock）</label>
         <select id="periodSelect">
-          <option value="2026-06"…9260 tokens truncated…on" class="command-btn" data-print-report>打印 / 保存 PDF</button>
+          <option value="2026-06"…9262 tokens truncated…s="command-btn" data-print-report>打印 / 保存 PDF</button>
           </div>
         </section>
         <article class="report-sheet" id="reportPreview">${reportBodyHtml(t, dims, score, loss)}</article>
@@ -677,10 +677,10 @@
       reportWindow.document.open();
       reportWindow.document.write(reportDocumentHtml());
       reportWindow.document.close();
-      reportWindow.onload = () => {
+      reportWindow.setTimeout(() => {
         reportWindow.focus();
         reportWindow.print();
-      };
+      }, 300);
       setReportStatus("打印窗口已打开，可选择“另存为 PDF”。");
     }
 
