@@ -11,9 +11,9 @@
 
 ### Pricing Agent
 
-- 建立样本数据和指标字典；
-- 完成菜单工程与定价规则基线；
-- 设计建议解释、情景模拟和试点方案；
+- 用 10 个情景完善定价模拟回归测试；
+- 补充 Menu Grid、P-mix Response 与 SKU 替代关系；
+- 邀请真实 Decision Owner 完成一次 10 分钟可用性测试；
 - 建立回归测试与人工复核。
 
 ## P1：下一候选
@@ -21,6 +21,7 @@
 - Store Health Agent：多指标异常诊断与行动优先级；
 - Customer Journey Agent：排队、出餐、评价的旅程诊断；
 - Decision Agent Starter：统一输入、证据、建议和评估框架；
+- Decision Meeting Copilot：从 Pricing 等垂直场景抽象会前、会中、会后与复盘流程；
 - GitHub Radar：每周研究 3–5 个候选项目并推荐一个复现目标；
 - RAG Evaluation Lab：比较检索、重排和引用正确性。
 
